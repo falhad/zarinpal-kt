@@ -13,6 +13,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.23"
 
     id("org.jreleaser") version "1.12.0"
+    id("signing")
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
     `maven-publish`
