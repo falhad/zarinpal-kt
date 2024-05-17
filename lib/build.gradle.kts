@@ -123,14 +123,16 @@ publishing {
 
 
     publications {
-        create<MavenPublication>("myLibrary") {
+        create<MavenPublication>("Maven") {
             from(components["java"])
-
+            groupId = "dev.falhad"
             artifactId = "zarinpal-kt"
+            description = "Connect to Zarinpal payment gateway in easy way."
+
             pom {
                 name.set("Zarinpal Kotlin SDK")
                 description.set("Connect to Zarinpal payment gateway in easy way.")
-                url.set("https://falhad.dev/library/zarinpal")
+                url.set("https://github.com/falhad/zarinpal-kt")
                 licenses {
                     license {
                         name.set("MIT License")
@@ -144,6 +146,7 @@ publishing {
                         email.set("cs.arcxx@gmail.com")
                     }
                 }
+
                 scm {
                     connection.set("scm:git:https://github.com/falhad/zarinpal-kt.git")
                     developerConnection.set("scm:git:https://github.com/falhad/zarinpal-kt.git")
@@ -152,5 +155,12 @@ publishing {
             }
 
         }
+
+        repositories {
+            maven {
+                url = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
+            }
+        }
+
     }
 }
