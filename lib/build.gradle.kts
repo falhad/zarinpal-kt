@@ -20,7 +20,7 @@ plugins {
 }
 
 group = "dev.falhad"
-version = "1.0.1"
+version = "1.0.3"
 
 
 repositories {
@@ -86,8 +86,8 @@ jreleaser {
                 create("maven-central") {
                     active.set(Active.ALWAYS)
                     url.set("https://s01.oss.sonatype.org/service/local")
-                    closeRepository.set(false) //todo set it to true later
-                    releaseRepository.set(false) //todo set it to true later
+                    closeRepository.set(true)
+                    releaseRepository.set(true)
                     stagingRepositories.add("build/staging-deploy")
                 }
             }
