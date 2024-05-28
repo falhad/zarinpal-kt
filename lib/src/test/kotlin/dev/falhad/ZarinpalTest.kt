@@ -3,33 +3,37 @@
  */
 package dev.falhad
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
-import kotlin.test.assertTrue
 
 class ZarinpalTest {
-    @Test fun createPayment() {
-        val zarinpal = Zarinpal("XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-X", sandbox = true)
+    @Test
+    fun createPayment() {
+        val zarinpal = Zarinpal("XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-X")
         runBlocking {
 
             println("running..")
             val createPayment = zarinpal.createPayment(
-                amount = 100,
+                amount = 1000,
                 description = "description",
                 callbackURL = "http://localhost:8080/verify",
                 email = "cs.arcxx@gmail.com",
                 mobile = "9307540810"
             )
             println("finished..")
-            when(createPayment){
-                is ApiResult.Error ->{
-                    println("error: ${createPayment.message}")
-                }
-                is ApiResult.Success -> {
-                    val webGatewayUrl = createPayment.data?.webGatewayUrl()
-                    println("navigate to $webGatewayUrl")
-                }
-            }
+            println(createPayment.message)
+            println(createPayment.data)
+            println(createPayment.exception)
+//            when (createPayment) {
+//                is Zarinpal.ApiResult.Error -> {
+//                    println("error: ${createPayment.message}")
+//                }
+//
+//                is Zarinpal.ApiResult.Success -> {
+//                    val webGatewayUrl = createPayment.data?.webGatewayUrl()
+//                    println("navigate to $webGatewayUrl")
+//                }
+//            }
         }
     }
 }

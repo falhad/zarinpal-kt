@@ -5,11 +5,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PaymentVerification(
-    @SerialName("MerchantID")
-    val merchantID: String,
-    @SerialName("Authority")
+    @SerialName("merchant_id")
+    val merchantId: String,
+    @SerialName("authority")
     val authority: String,
-    @SerialName("Amount")
+    @SerialName("amount")
     val amount: Int
 ){
     fun isValid(): Boolean {
